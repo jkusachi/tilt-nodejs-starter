@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: my-app:latest
+        env:
+        - name: HELLO_WORLD
+          value: "Hello, World!"
+        - name: MY_SUPER_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: my-secret
+              key: MY_SUPER_SECRET 

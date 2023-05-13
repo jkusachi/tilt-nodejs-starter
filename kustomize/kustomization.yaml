@@ -1,0 +1,9 @@
+---
+resources:
+  - deployment.yaml
+  - service.yaml
+  - secrets.yaml
+secretGenerator:
+  - name: my-generator-secrets
+    literals:
+      - MY_SOMETHING=admin
